@@ -25,10 +25,12 @@ router.get('/', async (req, res) => {
         res.status(500).json({message: error.message})
     }
 })
+
 // Getting one
 router.get('/:id', getSubscriber, (req, res) => {
     res.send(res.subscriber.name)
 })
+
 // Creating One
 router.post('/', async (req, res) => {
     const subscriber = new Subscriber({
@@ -42,6 +44,7 @@ router.post('/', async (req, res) => {
         res.status(400).json({message: error.message})
     }
 })
+
 // Updating one
 router.patch('/:id', getSubscriber, async (req, res) => {
     if (req.body.name != null){
@@ -58,6 +61,7 @@ router.patch('/:id', getSubscriber, async (req, res) => {
         res.status(400).json({ message: error.message})
     }
 })
+
 // Deleting one
 router.delete('/:id', async (req, res) => {
     try {
@@ -67,8 +71,5 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 })
-
-
-
 
 module.exports = router
